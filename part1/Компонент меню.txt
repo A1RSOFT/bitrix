@@ -1,0 +1,24 @@
+	1. Модули -> управление структурой. Создаем типы меню
+	2. Создаём разделы для каждого пункта меню сначала для статичных страниц
+	3. На тестовой странице -> изменить страницу-> служебные->навигация- меню. Формируем компонетну на test.php
+	4. Копируем компонент шаблона меню из битрикса
+	5. Редактируем скопированный local\tempalates\components\template.php
+
+	<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+
+	<?if (!empty($arResult)):?>
+	    <div class="head-nav">
+		<span class="menu"></span>
+		<ul class="cl-effect-1">
+		  <? foreach($arResult as $arItem): ?>
+		    <? if($arParams["MAX_LEVEL"] == 1 && $arItem["DEPTH_LEVEL"] > 1) continue; ?>
+		    <? if($arItem["SELECTED"]): ?>
+		        <li class="active"><a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a></li>
+		    <?else:?>
+		        <li><a href="<?= $arItem["LINK"] ?>"><?= $arItem["TEXT"] ?></a></li>
+		    <?endif?>
+		  <? endforeach; ?>
+		    <div class="clearfix"></div>
+		</ul>
+	    </div>
+

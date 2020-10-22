@@ -1,0 +1,5 @@
+1. Копируем компонент пагинации по пути \bitrix\components\bitrix\system_pagenavigation в \loca\templates\шаблон\components\bitrix
+2. В system_pagenavigation много встроенных шаблонов. Выбираем тот, который больше подходит нам и формируем директорию: \local\templates\шаблон\components\bitrix\system_pagenavigation\шаблон пагинации, который мы выбрали(шаблон переименовать, чтобы отличался от встроенного)
+
+3. В компоненте, где выводится пагинация, в поле "Шаблон пагинации" выбираем наш шаблон
+4. 

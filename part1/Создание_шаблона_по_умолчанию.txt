@@ -1,0 +1,4 @@
+В local\templates создаём папку .default 
+Перенеcем в .default папки: js, css, images
+В директории \local\php_interface создаём файл init.php в котором определяем константу, содержащую путь до js css images
+Также можно выносить компоненты, которые дублируются, наример menu

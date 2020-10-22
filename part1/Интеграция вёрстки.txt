@@ -1,0 +1,46 @@
+1. В папке local -> templates создаём шаблоны для сайта (определяем сколько нужно шаблонов)
+	2. В папку с шаблоном помещаем footer.php и header.php. Командой if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) проверяем, чтобы данные файлы не были доступны извне
+	3. Добавляем файл description.php c содержанием:
+	
+		<?
+			if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+				die();
+
+			$arTemplate = Array(
+				'NAME' => 'Шаблон сайта одежда',
+				'DESCRIPTION' => ''
+			);
+		?>
+		
+	4. Размещаем screen.gif в корне шаблона для иконки шаблона в админке   ///
+	5. Применяем шаблон в разделе Настройки продукта -> Сайты...
+	
+	6. Разнести вёрстку по файлам header.php footer.php index.php. В WORK_AREA(index.php) должен попадать только сам контент (не див, в который входит контент, а только сам контент)
+	7. В header.php с помощью $APPLICATION->ShowTitle(); выводим title станицы. Title задаётся в index.php c помощью $APPLICATION->SetTitle("Новости банка");
+	8. Подключаем стили и скрипты 
+		use \Bitrix\Main\Page\Asset;
+		
+		<? 
+			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/common-styles.css') 
+			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/js/vendor/cookesHelp.js');
+			Asset::getInstance()->addString('<meta name="viewport" content="width=device-width, initial-scale=1">');
+    			Asset::getInstance()->addString("<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>");
+    			Asset::getInstance()->addString("<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700' rel='stylesheet' type='text/css'>");
+    			
+    			Asset::getInstance()->addString('<link rel="icon" href="'. SITE_TEMPLATE_PATH . '/ico/favicon_bx.png">');
+		?>
+		
+		Удаляем: 
+			<meta charset="utf-8">
+			<meta name="keywords" content="Ключевые слова"/>
+    			<meta name="description" content="Описание страницы"/>
+    			
+    		Не трогаем: 	
+			<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+			
+	9. Подключаем картинки с помощью SITE_TEMPLATE_PATH
+		<div class="slider-responsive-inner-item-img" style="background-image: url('<?=SITE_TEMPLATE_PATH?>/img/slider-main/1.jpg')">
+			
+	10. Вызываем $APPLICATION->ShowHead(); - подключаем meta данные, стили, скрипты и тд.
+	11. После <body> $APPLICATION->ShowPanel();
+	12. В настройке модулей выключаем сжатие js  и автокеширование/////

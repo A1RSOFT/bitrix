@@ -1,0 +1,13 @@
+Для реализации поиска используется спец. компонент "Форма поиска", который будет ссылаться на страницу/раздел "Поиск" на котором будет располагаться компонент "Страница поиска"
+
+
+Шаблон компонента "Поиск". Добавляются name ="q" и name ="s": 
+
+<div class="b-search">
+    <form action="<?=$arResult["FORM_ACTION"]?>">
+        <input type="text" name="q" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+        <input type="submit" name="s" value="">
+    </form>
+</div>
+
+

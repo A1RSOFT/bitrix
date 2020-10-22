@@ -1,0 +1,22 @@
+
+                                    <?$APPLICATION->IncludeFile(
+                                      SITE_DIR . 'include/slogan.php',
+                                       Array(),
+                                       Array(
+                                         'MODE' => 'text'
+                                      )
+                                    )?>
+                                    
+                                    
+                                    
+                    <?$APPLICATION->IncludeComponent(
+                      "bitrix:main.include",
+                      "",
+                      Array(
+                          "AREA_FILE_SHOW" => "file",
+                          "AREA_FILE_SUFFIX" => "inc",
+                          "EDIT_TEMPLATE" => "",
+                          "PATH" => "include/social_links.php"
+                      )
+                  );?>
+
